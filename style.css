@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: rgb(92, 92, 255);
+}
+
+.top {
+    margin: 5% auto;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+.top h1 {
+    flex-basis: 100%;
+    text-align: center;
+    padding-bottom: 2%;
+    font-size: 30px;
+}
+
+.btnWrap {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.btn {
+    font-size: 20px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 85%;
+    margin: 0 auto;
+    gap: 5px;
+
+}
+
+.table div {
+    width: 20vw;
+    height: 10vh;
+    background-color: red;
+}
+
+.time,
+.moves {
+    flex-basis: 50%;
+    text-align: center;
+    padding-top: 25px;
+}
