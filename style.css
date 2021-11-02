@@ -58,8 +58,9 @@ body {
 }
 
 .time,
-.moves {
-    flex-basis: 50%;
+.moves,
+.bestTime {
+    flex-basis: 30%;
     text-align: center;
     padding-top: 25px;
 }
