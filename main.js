@@ -3,12 +3,13 @@ let minutesDisplay = document.querySelector(".minutes")
 let secondsDisplay = document.querySelector(".seconds")
 let movesCounter = document.querySelector(".movesCounter")
 let cardsTable = document.querySelector(".table")
-let bestTimeDisplay =document.querySelector(".bestTimeDisp")
+let bestTimeDisplay =document.querySelector(".bestTimeDisp");
+
 
 let seconds=0;
 let minutes=0;
 let gameTime=0;
-
+//  TIMER START FUNCTION
 const startTimer= ()=>{
     seconds++;
     if(seconds<10 ? seconds="0" + seconds : seconds);
@@ -25,7 +26,27 @@ const startTimer= ()=>{
 let interval;
 let active=false;
 let bestTime=0;
+let newCard;
+let cards=[];
+let move=0;
+let cardsColor =["red", "red", "blue", "blue", "green", "green", "brown", "brown","yellow", "yellow", "violet","violet",]
 
+// 
+const init =()=>{
+    cards.forEach(card => {
+        let position= Math.floor(Math.random()*cardsColor.length);
+        card.classList.add(cardsColor[position])
+        cardsColor.splice(position, 1)
+    });
+    setTimeout(function(){
+        cards.forEach(card => {
+            card.classList.add("hidden");
+            card.addEventListener('click', result);
+           });
+    }, 2000)
+
+}
+// START GAME FUNCTION
 const startGame = ()=>{
     if(!active){
         interval= setInterval(startTimer, 1000);
@@ -39,15 +60,36 @@ const startGame = ()=>{
                     bestTimeDisplay.textContent="0:"+( bestTime<10 ? bestTime="0"+bestTime : bestTime);
         };
         gameTime=0;
-     }
+        // CREATE AND ADD CARD TO TABLE
+        for (id = 0; id < 12; id++){
+        newCard= document.createElement("div");
+        cardsTable.appendChild(newCard);
+        cards =document.querySelectorAll(".table div");
+        }
+    }
     else{
+        // STOP AND RESET
         btn.textContent="start"
         clearInterval(interval);
         active=!active;
         seconds=0;
         minutes=0;
+        let divElms= document.querySelectorAll(".table div")
+        for (i = 0; i < divElms.length; i++){
+            cardsTable.removeChild(divElms[i])
+            }
+
     }
+    cards=[...cards];
+    cardsColor =["red", "red", "blue", "blue", "green", "green", "brown", "brown","yellow", "yellow", "violet","violet",]
+    init();
 }
+
+let activeCard="";
+const activeCards=[];
+let gamePair= cards.length / 2;
+let gameResult=0
+
 
 
 btn.addEventListener('click', startGame)

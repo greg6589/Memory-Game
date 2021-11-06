@@ -54,7 +54,6 @@ body {
 .table div {
     width: 20vw;
     height: 10vh;
-    background-color: red;
 }
 
 .time,
@@ -63,4 +62,34 @@ body {
     flex-basis: 30%;
     text-align: center;
     padding-top: 25px;
+}
+
+
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.brown {
+    background-color: brown;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.violet {
+    background-color: violet;
+}
+
+.hidden {
+    background-color: rgb(189, 189, 189);
 }
