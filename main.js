@@ -32,7 +32,7 @@ const startTimer= ()=>{
         gamePair=0;
         gameResult=0;
         move=0;
-        win.style.opacity="1";
+        win.style.display="block";
         let divElms= document.querySelectorAll(".table div")
         for (i = 0; i < divElms.length; i++){
             cardsTable.removeChild(divElms[i])
@@ -72,7 +72,7 @@ const startGame = ()=>{
         btn.textContent="stop";
         lastMoveDisplay.textContent=movesCounter.textContent;
         movesCounter.textContent=move;
-        win.style.opacity="0";
+        win.style.display="none";;
         lastTime=gameTime;
             if(lastTime>60){
                    lastTimeDisplay.textContent=(lastTime/60).toFixed(0)+":"+(lastTime%60 <10 ? "0"+ lastTime%60 : lastTime%60 );

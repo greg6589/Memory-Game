@@ -4,13 +4,12 @@
     box-sizing: border-box;
 }
 
-
 body {
     background-color: rgb(92, 92, 255);
 }
 
 .top {
-    margin: 5% auto;
+    margin: 10% auto;
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -62,8 +61,8 @@ body {
     text-align: center;
     color: white;
     font-weight: 600;
-    opacity: 0;
-    margin: 0 auto;
+    display: none;
+    margin: 20% auto;
 }
 
 .time,
@@ -71,6 +70,7 @@ body {
 .lastTime,
 .lastMoves {
     flex-basis: 50%;
+    flex-grow: 1;
     text-align: center;
     padding-top: 25px;
 }
@@ -125,4 +125,34 @@ body {
 
 .pair {
     background-color: rgb(78, 78, 78);
+}
+
+@media (min-width: 640px) and (orientation: landscape) {
+    .top {
+        margin: 1% auto;
+        width: 90%;
+    }
+
+    .table {
+        width: 85%;
+    }
+
+    .table div {
+        width: 16vw;
+        height: 14vh;
+    }
+
+    .win {
+        margin: 10% auto;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .time,
+    .moves,
+    .lastTime,
+    .lastMoves {
+        flex-basis: 25%;
+        padding-top: 15px;
+    }
 }
