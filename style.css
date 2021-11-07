@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +7,9 @@
 }
 
 body {
-    background-color: rgb(92, 92, 255);
+    background: rgb(81, 95, 195);
+    background: linear-gradient(90deg, rgba(81, 95, 195, 1) 0%, rgba(63, 100, 200, 1) 20%, rgba(82, 141, 255, 1) 80%, rgba(0, 142, 255, 1) 100%);
+    font-family: 'Roboto', sans-serif;
 }
 
 .top {
@@ -36,6 +40,8 @@ body {
     font-size: 20px;
     padding: 5px 15px;
     text-transform: uppercase;
+    background-color: white;
+    border: 1px solid white;
 }
 
 .table {
@@ -120,7 +126,7 @@ body {
 
 
 .hidden {
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(224, 224, 224);
 }
 
 .pair {
