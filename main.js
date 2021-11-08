@@ -48,7 +48,7 @@ let newCard;
 let cards=[];
 let move=0;
 const cardsCount=20;
-let cardsColor =["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "orangered", "orangered", "white", "white"]
+let cardsColor =["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"]
 
 // INITIAL FUNCTION FOR COLOR AND EVENT LISTENER
 const init =()=>{
@@ -107,7 +107,7 @@ const startGame = ()=>{
             }
     }
     cards=[...cards];
-    cardsColor =["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "orangered", "orangered", "white", "white"];
+    cardsColor =["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"];
     init();
 }
 
