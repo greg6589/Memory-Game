@@ -64,9 +64,9 @@ const startGame = () => {
     win.style.display = "none";;
     lastTime = gameTime;
     if (lastTime > 60) {
-      lastTimeDisplay.textContent = (lastTime / 60).toFixed(0) + ":" + (lastTime % 60 < 10 ? "0" + lastTime % 60 : lastTime % 60);
+      lastTimeDisplay.textContent = (lastTime / 60).toFixed(0) + ":" + (lastTime % 60 < 10 ? lastTime = leftFillSecondsValue(seconds, 2) % 60 : lastTime % 60);
     } else {
-      lastTimeDisplay.textContent = "0:" + (lastTime < 10 ? lastTime = "0" + lastTime : lastTime);
+      lastTimeDisplay.textContent = "0:" + (lastTime < 10 ? lastTime = leftFillSecondsValue(seconds, 2) : lastTime);
     };
     gameTime = 0;
     // CREATE AND ADD CARD TO TABLE
