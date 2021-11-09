@@ -70,19 +70,22 @@ const startGame = () => {
     } else {
       lastTimeDisplay.textContent = "0:" + (lastTime < 10 ? lastTime = leftFillSecondsValue(seconds, 2) : lastTime);
     };
+    createCards();
     gameTime = 0;
-    // CREATE AND ADD CARD TO TABLE
-    for (i = 0; i < cardsCount; i++) {
-      newCard = document.createElement("div");
-      cardsTable.appendChild(newCard);
-      cards = document.querySelectorAll(".table div");
-      gamePair = cards.length / 2;
-    }
+    pairsCount = cards.length / 2;
     cards = [...cards];
     cardsColor = ["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"];
     cardColorSelection();
   } else {
     stopAndResetGame();
+  }
+}
+
+const createCards = () => {
+  for (i = 0; i < cardsCount; i++) {
+    newCard = document.createElement("div");
+    cardsTable.appendChild(newCard);
+    cards = document.querySelectorAll(".table div");
   }
 }
 
