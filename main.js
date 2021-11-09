@@ -76,25 +76,29 @@ const startGame = () => {
       cards = document.querySelectorAll(".table div");
       gamePair = cards.length / 2;
     }
+    cards = [...cards];
+    cardsColor = ["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"];
+    init();
   } else {
-    stopAndResetGame()
+    stopAndResetGame();
   }
-  cards = [...cards];
-  cardsColor = ["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"];
-  init();
 }
 
 const stopAndResetGame = () => {
+  gameEnd();
+  movesCounter.textContent = 0;
+  minutesDisplay.textContent = minutes;
+  secondsDisplay.textContent = seconds + "0";
+  gameTime = 0;
+}
+
+const gameEnd = () => {
   btn.textContent = "start";
   clearInterval(interval);
   active = !active;
   seconds = 0;
   minutes = 0;
   move = 0;
-  movesCounter.textContent = 0;
-  minutesDisplay.textContent = minutes;
-  secondsDisplay.textContent = seconds + "0";
-  gameTime = 0;
   let divElms = document.querySelectorAll(".table div");
   for (i = 0; i < divElms.length; i++) {
     cardsTable.removeChild(divElms[i])
@@ -146,19 +150,10 @@ const result = (e) => {
 
 const resultCheck = function () {
   if (gameResult == gamePair) {
-    clearInterval(interval);
-    btn.textContent = "start";
-    active = !active;
-    seconds = 0;
-    minutes = 0;
+    gameEnd();
     gamePair = 0;
     gameResult = 0;
-    move = 0;
     win.style.display = "block";
-    let divElms = document.querySelectorAll(".table div")
-    for (i = 0; i < divElms.length; i++) {
-      cardsTable.removeChild(divElms[i])
-    }
   };
 }
 
