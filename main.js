@@ -11,13 +11,20 @@ let seconds = 0;
 let minutes = 0;
 let gameTime = 0;
 
+// ADDING ZERO AT THE BEGINNING IF seconds < 10
+function leftFillSecondsValue(seconds, targetLength) {
+  return seconds.toString().padStart(targetLength, 0);
+}
+
 //  TIMER START FUNCTION
 const setTimerInterval = () => {
   seconds++;
-  if (seconds < 10 ? seconds = "0" + seconds : seconds);
+
+
+  seconds = leftFillSecondsValue(seconds, 2)
   if (seconds > 59) {
     seconds = 0;
-    if (seconds < 10 ? seconds = "0" + seconds : seconds);
+    seconds = leftFillSecondsValue(seconds, 2);
     minutes++;
   };
   minutesDisplay.textContent = minutes;
