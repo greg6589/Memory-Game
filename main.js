@@ -16,11 +16,11 @@ function leftFillSecondsValue(seconds, targetLength) {
   return seconds.toString().padStart(targetLength, 0);
 }
 
+
+
 //  TIMER START FUNCTION
 const setTimerInterval = () => {
   seconds++;
-
-
   seconds = leftFillSecondsValue(seconds, 2)
   if (seconds > 59) {
     seconds = 0;
@@ -30,21 +30,7 @@ const setTimerInterval = () => {
   minutesDisplay.textContent = minutes;
   secondsDisplay.textContent = seconds;
   // RESULT CHECK
-  if (gameResult == gamePair) {
-    clearInterval(interval);
-    btn.textContent = "start";
-    active = !active;
-    seconds = 0;
-    minutes = 0;
-    gamePair = 0;
-    gameResult = 0;
-    move = 0;
-    win.style.display = "block";
-    let divElms = document.querySelectorAll(".table div")
-    for (i = 0; i < divElms.length; i++) {
-      cardsTable.removeChild(divElms[i])
-    }
-  };
+
   gameTime++
 }
 
@@ -127,7 +113,8 @@ const result = (e) => {
   activeCard.classList.remove("hidden");
   activeCard.removeEventListener('click', result);
   activeCards.push(activeCard);
-  move++;
+  ++move;
+
   if (move % 2 == 0) {
     movesCounter.textContent = move / 2;
   }
@@ -136,9 +123,10 @@ const result = (e) => {
       card.removeEventListener('click', result);
       card.classList.add("pair");
     });
-    gameResult++
+    ++gameResult;
     activeCard = "";
     activeCards.length = 0;
+    resultCheck();
     return
   } else if (activeCards.length === 2 && activeCards[0].classList.value !== activeCards[1].classList.value) {
     cards.forEach(card => {
@@ -156,6 +144,25 @@ const result = (e) => {
       activeCards.length = 0;
     }, 500)
   }
+
+}
+
+const resultCheck = function () {
+  if (gameResult == gamePair) {
+    clearInterval(interval);
+    btn.textContent = "start";
+    active = !active;
+    seconds = 0;
+    minutes = 0;
+    gamePair = 0;
+    gameResult = 0;
+    move = 0;
+    win.style.display = "block";
+    let divElms = document.querySelectorAll(".table div")
+    for (i = 0; i < divElms.length; i++) {
+      cardsTable.removeChild(divElms[i])
+    }
+  };
 }
 
 btn.addEventListener('click', startGame)
