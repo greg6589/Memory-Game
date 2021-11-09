@@ -12,7 +12,7 @@ let minutes = 0;
 let gameTime = 0;
 
 //  TIMER START FUNCTION
-const startTimer = () => {
+const setTimerInterval = () => {
   seconds++;
   if (seconds < 10 ? seconds = "0" + seconds : seconds);
   if (seconds > 59) {
@@ -67,7 +67,7 @@ const init = () => {
 // START GAME FUNCTION
 const startGame = () => {
   if (!active) {
-    interval = setInterval(startTimer, 1000);
+    interval = setInterval(setTimerInterval, 1000);
     active = !active;
     btn.textContent = "stop";
     lastMoveDisplay.textContent = movesCounter.textContent;
