@@ -39,8 +39,8 @@ let move = 0;
 const cardsCount = 20;
 let cardsColor = ["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"]
 
-// INITIAL FUNCTION FOR COLOR AND EVENT LISTENER
-const init = () => {
+// FUNCTION FOR COLOR SELECTION AND ADDING EVENT LISTENER
+const cardColorSelection = () => {
   cards.forEach(card => {
     let position = Math.floor(Math.random() * cardsColor.length);
     card.classList.add(cardsColor[position])
@@ -49,7 +49,7 @@ const init = () => {
   setTimeout(function () {
     cards.forEach(card => {
       card.classList.add("hidden");
-      card.addEventListener('click', result);
+      card.addEventListener('click', cardsComparison);
     });
   }, 3000)
 }
@@ -61,6 +61,8 @@ const startGame = () => {
     btn.textContent = "stop";
     lastMoveDisplay.textContent = movesCounter.textContent;
     movesCounter.textContent = move;
+    minutesDisplay.textContent = minutes;
+    secondsDisplay.textContent = seconds + "0";
     win.style.display = "none";;
     lastTime = gameTime;
     if (lastTime > 60) {
@@ -78,7 +80,7 @@ const startGame = () => {
     }
     cards = [...cards];
     cardsColor = ["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"];
-    init();
+    cardColorSelection();
   } else {
     stopAndResetGame();
   }
@@ -107,40 +109,42 @@ const gameEnd = () => {
 
 let activeCard = "";
 const activeCards = [];
-let gamePair;
-let gameResult = 0;
+let pairsCount;
+let currentRound = 0;
 
 // CARDS COMPARISON FUNCTION
-const result = (e) => {
+const cardsComparison = (e) => {
   activeCard = e.target;
   activeCard.classList.remove("hidden");
-  activeCard.removeEventListener('click', result);
+  activeCard.removeEventListener('click', cardsComparison);
   activeCards.push(activeCard);
   ++move;
-  if (move % 2 == 0) {
+
+  if (move % 2 === 0) {
     movesCounter.textContent = move / 2;
   }
   if (activeCards.length === 2 && activeCards[0].classList.value === activeCards[1].classList.value) {
     activeCards.forEach(card => {
-      card.removeEventListener('click', result);
+      card.removeEventListener('click', cardsComparison);
       card.classList.add("pair");
     });
-    ++gameResult;
+    ++currentRound;
     activeCard = "";
     activeCards.length = 0;
-    resultCheck();
+    gameResultCheck();
     return
   } else if (activeCards.length === 2 && activeCards[0].classList.value !== activeCards[1].classList.value) {
     cards.forEach(card => {
-      card.removeEventListener('click', result);
+      card.removeEventListener('click', cardsComparison);
     });
     setTimeout(function () {
       cards.forEach(card => {
         if (card.classList.contains("pair")) {
-          card.removeEventListener('click', result);
-        } else(
-          card.addEventListener('click', result), card.classList.add("hidden")
-        )
+          card.removeEventListener('click', cardsComparison);
+        } else {
+          card.addEventListener('click', cardsComparison);
+          card.classList.add("hidden")
+        }
       });
       activeCard = "";
       activeCards.length = 0;
@@ -148,11 +152,12 @@ const result = (e) => {
   }
 }
 
-const resultCheck = function () {
-  if (gameResult == gamePair) {
+const gameResultCheck = function () {
+  let lastRound = pairsCount;
+  if (currentRound === lastRound) {
     gameEnd();
-    gamePair = 0;
-    gameResult = 0;
+    pairsCount = 0;
+    currentRound = 0;
     win.style.display = "block";
   };
 }
