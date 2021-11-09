@@ -81,25 +81,28 @@ const startGame = () => {
       gamePair = cards.length / 2;
     }
   } else {
-    // STOP AND RESET
-    btn.textContent = "start";
-    clearInterval(interval);
-    active = !active;
-    seconds = 0;
-    minutes = 0;
-    move = 0;
-    movesCounter.textContent = 0;
-    minutesDisplay.textContent = minutes;
-    secondsDisplay.textContent = seconds + "0";
-    gameTime = 0;
-    let divElms = document.querySelectorAll(".table div");
-    for (i = 0; i < divElms.length; i++) {
-      cardsTable.removeChild(divElms[i])
-    }
+    stopAndResetGame()
   }
   cards = [...cards];
   cardsColor = ["red", "red", "blue", "blue", "green", "green", "black", "black", "yellow", "yellow", "violet", "violet", "cyan", "cyan", "indigo", "indigo", "saddlebrown", "saddlebrown", "white", "white"];
   init();
+}
+
+const stopAndResetGame = () => {
+  btn.textContent = "start";
+  clearInterval(interval);
+  active = !active;
+  seconds = 0;
+  minutes = 0;
+  move = 0;
+  movesCounter.textContent = 0;
+  minutesDisplay.textContent = minutes;
+  secondsDisplay.textContent = seconds + "0";
+  gameTime = 0;
+  let divElms = document.querySelectorAll(".table div");
+  for (i = 0; i < divElms.length; i++) {
+    cardsTable.removeChild(divElms[i])
+  }
 }
 
 let activeCard = "";
@@ -114,7 +117,6 @@ const result = (e) => {
   activeCard.removeEventListener('click', result);
   activeCards.push(activeCard);
   ++move;
-
   if (move % 2 == 0) {
     movesCounter.textContent = move / 2;
   }
@@ -146,6 +148,7 @@ const result = (e) => {
   }
 
 }
+
 
 const resultCheck = function () {
   if (gameResult == gamePair) {
