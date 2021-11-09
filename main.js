@@ -16,8 +16,6 @@ function leftFillSecondsValue(seconds, targetLength) {
   return seconds.toString().padStart(targetLength, 0);
 }
 
-
-
 //  TIMER START FUNCTION
 const setTimerInterval = () => {
   seconds++;
@@ -29,8 +27,6 @@ const setTimerInterval = () => {
   };
   minutesDisplay.textContent = minutes;
   secondsDisplay.textContent = seconds;
-  // RESULT CHECK
-
   gameTime++
 }
 
@@ -146,9 +142,7 @@ const result = (e) => {
       activeCards.length = 0;
     }, 500)
   }
-
 }
-
 
 const resultCheck = function () {
   if (gameResult == gamePair) {
